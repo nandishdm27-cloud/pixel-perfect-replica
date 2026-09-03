@@ -1,29 +1,34 @@
-# Welcome to your Lovable project
+# My Calculator
 
-This project was built with [Lovable](https://lovable.dev).
+A focused, responsive calculator for everyday math. It combines a clean keypad with keyboard support and a session-only history of recent calculations.
 
-## Build with Lovable
+## Features
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+- Addition, subtraction, multiplication, and division with correct order of operations
+- Decimal, percentage, positive/negative, clear, backspace, and equals controls
+- Keyboard shortcuts for numbers, operators, Enter, Backspace, and Escape
+- Graceful division-by-zero and invalid-input messages
+- Clickable calculation history with a clear-history action
+- Responsive desktop, tablet, and mobile layout
+- Optional light theme
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Technologies
 
-## Development
+- TanStack Start
+- React 19 and TypeScript
+- TanStack Router
+- Tailwind CSS v4 and semantic CSS design tokens
+- Lucide React icons
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Run locally
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
 
-## Built with
+Open the local URL printed by Vite.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## How to use
+
+Click the keypad or use your keyboard to enter an expression. Press `Enter` or `=` to calculate, `Backspace` to remove the last character, and `Escape` to clear the current expression. Recent results are available in the history panel for the duration of the current session.
