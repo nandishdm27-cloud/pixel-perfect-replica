@@ -140,5 +140,57 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    min-width: 320px;
+    font-family: var(--font-sans);
   }
 }
+
+:root {
+  --font-sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  --background: oklch(0.16 0.018 255); --foreground: oklch(0.96 0.012 92);
+  --card: oklch(0.205 0.02 255); --card-foreground: oklch(0.96 0.012 92);
+  --popover: oklch(0.22 0.022 255); --popover-foreground: oklch(0.96 0.012 92);
+  --primary: oklch(0.73 0.16 47); --primary-foreground: oklch(0.17 0.025 255);
+  --secondary: oklch(0.255 0.026 255); --secondary-foreground: oklch(0.9 0.015 92);
+  --muted: oklch(0.225 0.02 255); --muted-foreground: oklch(0.68 0.025 90);
+  --accent: oklch(0.77 0.12 165); --accent-foreground: oklch(0.17 0.025 255);
+  --destructive: oklch(0.68 0.18 27); --destructive-foreground: oklch(0.98 0.01 92);
+  --border: oklch(1 0 0 / 11%); --input: oklch(1 0 0 / 14%); --ring: oklch(0.73 0.16 47);
+  --surface-raised: oklch(0.235 0.024 255); --surface-key: oklch(0.275 0.026 255); --surface-key-hover: oklch(0.32 0.03 255);
+  --operator: oklch(0.36 0.07 47); --operator-foreground: oklch(0.91 0.1 69);
+}
+* { box-sizing: border-box; }
+button { font: inherit; }
+.calculator-shell { min-height: 100vh; background: var(--background); color: var(--foreground); padding: 40px 24px 28px; transition: background-color 220ms ease, color 220ms ease; }
+.calculator-shell.light-mode { --background: oklch(0.94 0.018 82); --foreground: oklch(0.2 0.025 255); --card: oklch(0.985 0.008 82); --card-foreground: oklch(0.2 0.025 255); --secondary: oklch(0.91 0.018 82); --secondary-foreground: oklch(0.23 0.025 255); --muted: oklch(0.9 0.015 82); --muted-foreground: oklch(0.46 0.03 255); --border: oklch(0.2 0.025 255 / 13%); --surface-raised: oklch(0.96 0.01 82); --surface-key: oklch(0.91 0.016 82); --surface-key-hover: oklch(0.86 0.02 82); --operator: oklch(0.83 0.105 57); --operator-foreground: oklch(0.25 0.045 45); }
+.app-container { width: min(100%, 1050px); margin: 0 auto; }
+.app-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 46px; }
+.brand-lockup { display: flex; align-items: center; gap: 14px; }
+.brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; background: var(--primary); color: var(--primary-foreground); box-shadow: 0 8px 24px oklch(0.73 0.16 47 / 19%); }
+.eyebrow { margin: 0 0 3px; color: var(--muted-foreground); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+h1, h2, p { margin: 0; } h1 { font-size: clamp(22px, 3vw, 28px); font-weight: 650; letter-spacing: 0.01em; }
+.icon-button { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 50%; background: transparent; color: var(--muted-foreground); cursor: pointer; transition: background-color 160ms ease, color 160ms ease, transform 160ms ease; }
+.icon-button:hover { background: var(--surface-raised); color: var(--foreground); transform: rotate(12deg); }
+.workspace { display: grid; grid-template-columns: minmax(360px, 550px) minmax(250px, 1fr); gap: 62px; align-items: start; }
+.calculator-panel { padding: 22px; border: 1px solid var(--border); border-radius: 18px; background: var(--card); box-shadow: 0 24px 70px oklch(0 0 0 / 18%); }
+.display { min-height: 148px; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end; padding: 23px 20px 19px; border-radius: 12px; background: var(--surface-raised); overflow: hidden; }
+.expression-label { width: 100%; min-height: 20px; overflow: hidden; color: var(--muted-foreground); font-size: 13px; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
+.display-value { max-width: 100%; overflow: hidden; color: var(--foreground); font-size: clamp(38px, 6vw, 54px); font-variant-numeric: tabular-nums; font-weight: 520; letter-spacing: 0; line-height: 1.15; text-overflow: ellipsis; white-space: nowrap; }
+.display-error .display-value { color: var(--destructive); font-size: 38px; } .error-message { margin-top: 7px; color: var(--destructive); font-size: 12px; }
+.keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 16px; }
+.key { min-height: 66px; display: grid; place-items: center; border: 0; border-radius: 10px; color: var(--foreground); cursor: pointer; font-size: 22px; font-weight: 600; transition: background-color 140ms ease, color 140ms ease, transform 100ms ease, box-shadow 140ms ease; user-select: none; }
+.key:active { transform: scale(0.95); } .key-number { background: var(--surface-key); } .key-number:hover { background: var(--surface-key-hover); }
+.key-action { background: var(--muted); color: var(--accent); font-size: 17px; } .key-action:hover { background: var(--surface-key-hover); }
+.key-operator { background: var(--operator); color: var(--operator-foreground); } .key-operator:hover { background: var(--primary); color: var(--primary-foreground); }
+.key-delete { background: var(--surface-key); color: var(--muted-foreground); } .key-delete:hover { background: var(--surface-key-hover); color: var(--foreground); }
+.key-equals { background: var(--primary); color: var(--primary-foreground); font-size: 28px; box-shadow: 0 8px 18px oklch(0.73 0.16 47 / 14%); } .key-equals:hover { filter: brightness(1.08); }
+.key-zero { grid-column: span 2; }
+.history-panel { min-height: 390px; padding-top: 8px; } .history-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.history-title { display: flex; align-items: center; gap: 9px; color: var(--foreground); } .history-title svg { color: var(--primary); } .history-title h2 { font-size: 15px; font-weight: 650; }
+.clear-history { border: 0; background: transparent; color: var(--muted-foreground); cursor: pointer; font-size: 12px; } .clear-history:hover { color: var(--destructive); }
+.empty-history { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; color: var(--muted-foreground); text-align: center; } .empty-icon { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 14px; border: 1px solid var(--border); border-radius: 50%; color: var(--primary); } .empty-history p { color: var(--foreground); font-size: 14px; font-weight: 600; } .empty-history span { margin-top: 6px; font-size: 12px; }
+.history-list { display: flex; flex-direction: column; gap: 2px; padding-top: 10px; } .history-item { display: flex; align-items: center; justify-content: space-between; gap: 14px; width: 100%; padding: 13px 10px; border: 0; border-bottom: 1px solid var(--border); background: transparent; color: var(--muted-foreground); cursor: pointer; text-align: left; } .history-item:hover { color: var(--foreground); } .history-item span { overflow: hidden; font-size: 13px; text-overflow: ellipsis; white-space: nowrap; } .history-item strong { color: var(--foreground); font-size: 14px; font-weight: 600; white-space: nowrap; }
+.history-footer { display: flex; align-items: center; gap: 7px; margin-top: 24px; color: var(--muted-foreground); font-size: 11px; }
+.app-footer { display: flex; align-items: center; gap: 9px; margin-top: 46px; color: var(--muted-foreground); font-size: 11px; } .footer-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--accent); } .footer-key { padding: 3px 7px; border: 1px solid var(--border); border-radius: 5px; color: var(--muted-foreground); font-size: 10px; }
+@media (max-width: 800px) { .calculator-shell { padding: 28px 18px 22px; } .app-header { margin-bottom: 30px; } .workspace { grid-template-columns: 1fr; gap: 34px; } .calculator-panel, .history-panel { width: min(100%, 550px); margin: 0 auto; } .history-panel { min-height: auto; } .empty-history { min-height: 180px; } .app-footer { margin-top: 32px; } }
+@media (max-width: 420px) { .calculator-shell { padding-inline: 12px; } .calculator-panel { padding: 13px; border-radius: 15px; } .display { min-height: 132px; padding-inline: 14px; } .keypad { gap: 7px; margin-top: 12px; } .key { min-height: 61px; border-radius: 9px; } .eyebrow { font-size: 9px; } }
